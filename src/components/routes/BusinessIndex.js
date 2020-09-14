@@ -11,9 +11,6 @@ class Businesses extends Component {
       businesses: []
     }
   }
-  // handleChange = event => setState({
-  //   [event.target.name]: event.target.value
-  // })
   componentDidMount () {
     const { user, msgAlert } = this.props
     businessIndex(this.state, user)
@@ -23,7 +20,6 @@ class Businesses extends Component {
         message: messages.businessIndexSuccess,
         variant: 'success'
       }))
-      // .then(() => history.push('/'))
       .catch(error => {
         msgAlert({
           heading: 'Item index Failed with error: ' + error.message,
@@ -34,7 +30,6 @@ class Businesses extends Component {
   }
 
   render () {
-  // const { name, quantity, price } = this.state
     const businesses = this.state.businesses.map(business => (
       <li key={business._id}>
         <Link to={`/businesses-index/${business._id}`}>

@@ -24,7 +24,7 @@ const Upload = props => {
       headers: {
         'Authorization': `Token token=${user.token}`
       },
-      url: apiUrl + '/items',
+      url: apiUrl + '/upload',
       method: 'POST',
       data: data
     })

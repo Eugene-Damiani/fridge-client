@@ -1,95 +1,45 @@
-// import React, { Component } from 'react'
-// import axios from 'axios'
-//
-// class DisplayImage extends Component {
-//   constructor () {
-//     super()
-//     this.state = {
-//       upload: []
-//     }
-//   }
-//
-//   formHandler = e => {
-//     e.preventDefault()
-//     const filename = document.querySelector('#filename').value
-//     const generateGetUrl = 'http://localhost:4741/generate-get-url'
-//     const options = {
-//       params: {
-//         Key: filename,
-//         ContentType: 'image/jpeg'
-//       }
-//     }
-//     axios.get(generateGetUrl, options).then(res => {
-//       const { data: getURL } = res
-//       this.setState({ getURL })
-//     })
-//   };
-//
-//   handleImageLoaded = () => {
-//     this.setState({ message: 'Done' })
-//   }
-//
-//   handleImageError = () => {
-//     this.setState({ message: 'Sorry, something went wrong. Please check if the remote file exists.' })
-//   }
-//
-//   render () {
-//     const { getURL, message } = this.state
-//     return (
-//       <React.Fragment>
-//         <h1>Retrieve Image from AWS S3 Bucket</h1>
-//         <form onSubmit={this.formHandler}>
-//           <label> Image name:</label>
-//           <input id='filename' />
-//           <p>
-//             <i>Image name must include the extension, eg. cat.jpeg</i>
-//           </p>
-//           <button>Load</button>
-//         </form>
-//         <p>{message}</p>
-//         <div>
-//           {getURL && (
-//             <React.Fragment>
-//               <div>
-//                 <img
-//                   id='show-picture'
-//                   src={getURL}
-//                   alt='File stored in AWS S3'
-//                   onLoad={this.handleImageLoaded}
-//                   onError={this.handleImageError}
-//                 />
-//               </div>
-//             </React.Fragment>
-//           )}
-//         </div>
-//       </React.Fragment>
-//     )
-//   }
-// }
-//
-// export default DisplayImage
+import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import { imageIndex } from '../../api/image'
 
-// import React, { useState, useEffect } from 'react'
-// import Layout from '../Layout'
-// import { Link } from 'react-router-dom'
-// import axios from 'axios'
-// import apiUrl from '../../apiConfig'
-//
-// const Image = props => {
-//   const [upload, setUpload] = useState(null)
-//
-//   useEffect(() => {
-//     axios(`${apiUrl}/uploads/${props.match.params.id}`)
-//       .then(res => setUpload(res.data.upload))
-//       .catch(console.error)
-//   }, [])
-//
-// return (
-//     <Layout>
-//       <Link to={`/uploads/${this.props.match.params.id}`}>
-//       </Link>
-//     </Layout>
-//   )
-// }
-//
-// export default Image
+class DisplayImage extends Component {
+  constructor () {
+    super()
+    this.state = {
+      uploads: []
+    }
+  }
+  componentDidMount () {
+    const { user, msgAlert } = this.props
+    imageIndex(this.state, user)
+      .then(res => this.setState({ uploads: res.data.uploads }))
+      .then(() => msgAlert({
+        heading: 'Show Index Success',
+        variant: 'success'
+      }))
+      .catch(error => {
+        msgAlert({
+          heading: 'Item index Failed with error: ' + error.message,
+          variant: 'danger'
+        })
+      })
+  }
+
+  render () {
+  // const { name, quantity, price } = this.state
+    const uploads = this.state.images.map(upload => (
+      <li key={upload._id}>
+        <Link to={`/image-index/${upload._id}`}>
+          {upload.name}
+        </Link>
+      </li>
+    ))
+    return (
+      <div>
+        {uploads}
+      </div>
+    )
+  }
+}
+
+export default withRouter(DisplayImage)

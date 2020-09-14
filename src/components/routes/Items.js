@@ -5,7 +5,7 @@ import messages from '../AutoDismissAlert/messages'
 import Layout from '../../components/Layout'
 // import QRCode from 'react-qrcode-generator'
 import QRImage from 'react-qr-image'
-import Upload from './Upload'
+import UploadCreate from './UploadCreate'
 
 class Items extends Component {
   constructor () {
@@ -44,7 +44,7 @@ class Items extends Component {
         <td><QRImage
           height={60} width={60}
           text = {`${item.name}  qty: ${item.quantity} price: ${item.price}`}/></td>
-        <td><Upload/></td>
+        <td><UploadCreate/></td>
       </tr>
     ))
     return (
@@ -54,7 +54,8 @@ class Items extends Component {
             <tr>
               <th scope="col">Items</th>
               <th scope="col">QRCode</th>
-              <th scope="col">Picture</th>
+              <th scope="col">Picture Download</th>
+              <th scope="col">Picture Image</th>
             </tr>
             {items}
           </tbody>
