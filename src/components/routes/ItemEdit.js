@@ -5,9 +5,6 @@ import { Redirect, withRouter } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
 import messages from '../AutoDismissAlert/messages'
-
-// import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
 import ItemForm from '../../components/ItemForm'
 import Layout from '../../components/Layout'
 

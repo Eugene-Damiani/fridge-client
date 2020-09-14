@@ -13,6 +13,10 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import Item from '../routes/Item'
+import BusinessCreate from '../routes/BusinessCreate'
+import BusinessIndex from '../routes/BusinessIndex'
+import Business from '../routes/Business'
+import BusinessEdit from '../routes/BusinessEdit.js'
 
 class App extends Component {
   constructor () {
@@ -75,6 +79,18 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/items' render={() => (
             <Items msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/business-create' render={() => (
+            <BusinessCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/businesses-index' render={() => (
+            <BusinessIndex msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/businesses-index/:id/edit' render={(navProps) => (
+            <BusinessEdit {...navProps} msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/businesses-index/:id' render={(navProps) => (
+            <Business {...navProps} msgAlert={this.msgAlert} user={user} />
           )} />
 
         </main>
