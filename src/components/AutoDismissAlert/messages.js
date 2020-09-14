@@ -13,5 +13,17 @@ export default {
   itemEditSuccess: 'Click the item to see the changes!',
   itemEditFailure: 'Try again.',
   itemDeleteSuccess: 'Congrats on using it all up! Is it time to buy more?',
-  itemDeleteFailure: 'It\'s still in your inventory.'
+  itemDeleteFailure: 'It\'s still in your inventory.',
+  imageUploadSuccess: 'Image is uploaded',
+  imageUploadFailure: 'Image is not uploaded',
+  businessCreateSuccess: 'Your have an approved Business!',
+  businessCreateFailure: 'Missing information please try again',
+  businessIndexSuccess: 'All approved businesses',
+  businessIndexFailure: 'Sorry Please Try Again',
+  businessShowSuccess: 'Address to send Order',
+  businessShowFailure: 'Does not exist',
+  businessDeleteSuccess: 'Business deleted',
+  businessDeleteFailure: 'Still an approved business',
+  businessEditSuccess: 'Contact Updated',
+  businessEditFailure: 'Contact is not Updated'
 }
