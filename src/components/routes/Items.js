@@ -4,7 +4,6 @@ import { index } from '../../api/item'
 import messages from '../AutoDismissAlert/messages'
 import Layout from '../../components/Layout'
 // import QRCode from 'react-qrcode-generator'
-import QRImage from 'react-qr-image'
 
 class Items extends Component {
   constructor () {
@@ -40,9 +39,6 @@ class Items extends Component {
     const items = this.state.items.map(item => (
       <tr key={item._id}>
         <td><Link to={`/items/${item._id}`}>{item.name}</Link></td>
-        <td><QRImage
-          height={60} width={60}
-          text = {`${item.name}  qty: ${item.quantity} price: ${item.price}`}/></td>
       </tr>
     ))
     return (
@@ -51,7 +47,6 @@ class Items extends Component {
           <tbody>
             <tr>
               <th scope="col">Items</th>
-              <th scope="col">QRCode</th>
             </tr>
             {items}
           </tbody>
