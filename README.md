@@ -6,10 +6,10 @@ This React app was made by Eugene, Fiona and Monika in Team overReacting (get it
 
 ## Important Links
 
-- [Deployed Client](https://overreacting.github.io/fridge-client)
-- [Client Repo](https://github.com/overReacting/fridge-client)
-- [Deployed API](https://stark-falls-98169.herokuapp.com)
-- [API Repo](https://github.com/overReacting/fridge-api)
+- [Deployed Client](https://eugene-damiani.github.io/fridge-client/)
+- [Client Repo](https://github.com/Eugene-Damiani/fridge-client)
+- [Deployed API](https://tranquil-crag-61634.herokuapp.com)
+- [API Repo](https://github.com/Eugene-Damiani/fridge-api)
 
 ## Planning Story
 
