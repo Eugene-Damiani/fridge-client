@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import messages from '../AutoDismissAlert/messages'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -15,32 +14,23 @@ const Upload = props => {
     setSelected(event.target.files[0])
   }
 
-  const handleSubmit = (event, user) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    const { msgAlert } = { props }
+
     setLoading(true)
     const data = new FormData()
     data.append('upload', selected)
     axios({
+      headers: {
+        'Authorization': `Token token=${props.user.token}`
+      },
       url: apiUrl + '/uploads',
       method: 'POST',
       data: data
     })
       .then(res => setUpload(res.data.upload))
       .then(() => setLoading(false))
-      .then(() => msgAlert({
-        heading: 'Picture Perfect!',
-        message: messages.imageUploadSuccess,
-        variant: 'success'
-      }))
       .catch(console.error)
-      .catch(error => {
-        msgAlert({
-          heading: 'Couldn\'t add this to your inventory. ' + error.message,
-          message: messages.ItemCreationFailure,
-          variant: 'danger'
-        })
-      })
   }
 
   return (
@@ -51,7 +41,7 @@ const Upload = props => {
         <Form.Group>
           <Form.File id="upload-file-input" label="Upload File Here" onChange={handleChange}/>
         </Form.Group>
-        <Button variant="primary" type="submit">Submit</Button>
+        <Button variant="primary" type="submit">Upload</Button>
       </Form>
     </div>
   )

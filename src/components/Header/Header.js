@@ -3,13 +3,14 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
-    <NavDropdown title="Approved Vendors" alignRight id="settings-dropdown">
+    <NavDropdown title="Businesses" alignRight id="settings-dropdown">
       <NavDropdown.Item href="#business-create">Add Business</NavDropdown.Item>
       <NavDropdown.Divider />
       <NavDropdown.Item href="#businesses-index">Approved Businesses</NavDropdown.Item>
     </NavDropdown>
     <Nav.Link href="#items">Fridge Items</Nav.Link>
     <Nav.Link href="#item-create">Add Item</Nav.Link>
+    <Nav.Link href="#upload-create"> Upload Image</Nav.Link>
     <NavDropdown title="Settings" alignRight id="settings-dropdown">
       <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
       <NavDropdown.Divider />

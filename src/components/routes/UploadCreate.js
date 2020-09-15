@@ -14,6 +14,7 @@ class UploadCreate extends Component {
       upload: ''
     }
   }
+
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
   })
@@ -42,9 +43,9 @@ class UploadCreate extends Component {
       <div className="upload">
         {this.state.upload.url ? (<img className="display-image" alt={this.state.upload.url} src={this.state.upload.url}/>) : ''}
         {this.state.loading ? (<img alt="loading gif" src="https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif" />) : ''}
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.state.handleSubmit}>
           <Form.Group>
-            <Form.File id="upload-file-input" label="Upload File Here" onChange={this.handleChange}/>
+            <Form.File id="upload-file-input" label="Upload File Here" onChange={this.state.handleChange}/>
           </Form.Group>
           <Button variant="primary" type="submit">Upload</Button>
         </Form>
