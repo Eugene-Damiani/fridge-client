@@ -17,6 +17,7 @@ import BusinessCreate from '../routes/BusinessCreate'
 import BusinessIndex from '../routes/BusinessIndex'
 import Business from '../routes/Business'
 import BusinessEdit from '../routes/BusinessEdit.js'
+import Upload from '../routes/Upload'
 
 class App extends Component {
   constructor () {
@@ -91,6 +92,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/businesses-index/:id' render={(navProps) => (
             <Business {...navProps} msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/upload-create' render={() => (
+            <Upload msgAlert={this.msgAlert} user={user} />
           )} />
 
         </main>

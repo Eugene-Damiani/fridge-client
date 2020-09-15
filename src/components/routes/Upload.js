@@ -14,7 +14,7 @@ const Upload = props => {
     setSelected(event.target.files[0])
   }
 
-  const handleSubmit = (event, user) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
 
     setLoading(true)
@@ -22,9 +22,9 @@ const Upload = props => {
     data.append('upload', selected)
     axios({
       headers: {
-        'Authorization': `Token token=${user.token}`
+        'Authorization': `Token token=${props.user.token}`
       },
-      url: apiUrl + '/upload',
+      url: apiUrl + '/uploads',
       method: 'POST',
       data: data
     })
